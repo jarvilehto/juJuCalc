@@ -1,46 +1,60 @@
-const checkBoxes = () => {
-  var check = document.getElementById("checkDeg");
-  var checkYaw = document.getElementById("checkYaw");
-  var checkCustomYaw = document.getElementById("customCheck");
+//Checkboxes
+const checkDeg = document.getElementById("checkDeg");
+const checkYaw = document.getElementById("checkYaw");
+const cYaw = document.getElementById("bcustomYaw");
+const resultDiv = document.getElementById("results");
+const checkCustomYaw = document.getElementById("customCheck");
+const customYaw = document.getElementById("custom_yaw");
 
-  var cm = document.getElementById("threesixty");
-  var yaw = document.getElementById("yaw");
-  var customYaw = document.getElementById("custom_yaw");
+//Default state
+checkDeg.checked = true;
+checkYaw.checked = false;
+checkCustomYaw.checked = false;
 
-  if (check.checked == true) {
-    cm.style.display = "none";
-  } else {
-    cm.style.display = "block";
-  }
+/* Show these depending on checkbox state
+Either show cm/360 for calculating Yaw esitmate
+Or show yaw settings for calculating cm/360 estimate */
+const cm = document.getElementById("threesixty");
+const yaw = document.getElementById("yaw");
 
-  if (checkYaw.checked == true) {
-    yaw.style.display = "none";
-  } else {
-    yaw.style.display = "block";
-  }
+/*For custom yaw */
 
-  if (checkCustomYaw.checked == true) {
-    customYaw.style.display = "block";
-  } else {
-    customYaw.style.display = "none";
-  }
+const cbDegYaw = (obj) => {
+  // Uncheck all checkboxes with class "cbDY"
+  document.querySelectorAll(".cbDY").forEach((cb) => (cb.checked = false));
+  // Check the clicked checkbox
+  obj.checked = true;
+  // Set display style based on checkDeg and checkYaw
+  cm.style.display = checkDeg.checked ? "none" : "block";
+  yaw.style.display = checkDeg.checked ? "block" : "none";
+  cYaw.style.display = checkYaw.checked ? "none" : "block";
 };
 
-const cm360 = () => {
+// Check if custom yaw is enabled.
+const boxCustomYaw = () => {
+  console.log("customYaw");
+  customYaw.style.display = checkCustomYaw.checked ? "block" : "none";
+};
+
+const calcCmYaw = () => {
   //Get user inputs
   var dpi = parseFloat(document.getElementById("dpi").value);
   var cm = parseFloat(document.getElementById("Deg").value);
   var yaw = parseFloat(document.getElementById("yaw").value);
   var sens = parseFloat(document.getElementById("sens").value);
-  var custom_yaw = parseFloat(document.getElementById("custom_yaw").value);
+  var customYaw = parseFloat(document.getElementById("custom_yaw").value);
+  var result = 0;
 
-  //calculate result
-  // var result = (360 * 2, 54) / (dpi * yaw * sens);
-
-  //Send result back
-  //document.getElementById("calc_result").value = result.toFixed(4);
-
-  console.log(dpi, yaw, sens, custom_yaw, cm);
+  if (checkDeg.checked == true) {
+    if (checkCustomYaw.checked == true) {
+      console.log("with custom yaw");
+      result = (360 * 2.54) / (dpi * customYaw * sens);
+    } else {
+      result = (360 * 2.54) / (dpi * yaw * sens);
+    }
+    resultDiv.innerHTML = `${result.toFixed(3)} cm/360`;
+  } else {
+    result = (360 * 2.54) / (dpi * cm * sens);
+    resultDiv.innerHTML = `${result.toFixed(3)} yaw`;
+  }
 };
-
-const calcYaw = () => {};

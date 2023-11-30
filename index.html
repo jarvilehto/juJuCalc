@@ -8,7 +8,7 @@
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <title>juJu sens/yaw calc</title>
+    <title>juJuCalc</title>
   </head>
   <body class="bg-blue-600">
     <div id="nav" class=""></div>
@@ -18,45 +18,62 @@
         <form class="p-2">
           <div>
             <label for="check360">360 calc</label>
-            <input type="checkbox" id="checkDeg" onclick="checkBoxes()" />
+            <input
+              type="checkbox"
+              id="checkDeg"
+              class="cbDY"
+              onclick="cbDegYaw(this)"
+            />
             <label for="checkYaw">yaw calc</label>
-            <input type="checkbox" id="checkYaw" onclick="checkBoxes()" />
+            <input
+              type="checkbox"
+              id="checkYaw"
+              class="cbDY"
+              onclick="cbDegYaw(this)"
+            />
           </div>
 
-          <div><input type="number" id="dpi" placeholder="0" /></div>
+          <div>
+            <p>DPI</p>
+            <input type="number" id="dpi" value="0" />
+          </div>
           <div class="flex flex-col w-1/2">
             <select name="" id="yaw">
-              <option value="1">Source</option>
-              <option value="2">Valorant</option>
-              <option value="3">Overwatch</option>
+              <option value="0.022">Source</option>
+              <option value="0.069994">Valorant</option>
+              <option value="0.0066">Overwatch</option>
             </select>
             <div>
-              <div>
-                <label for="customCheck">Custom yaw</label>
+              <div id="bcustomYaw">
+                <label for="customCheck">Custom yaw?</label>
                 <input
                   type="checkbox"
                   id="customCheck"
-                  onclick="checkBoxes()"
+                  onclick="boxCustomYaw()"
                 />
               </div>
               <input
                 type="number"
                 id="custom_yaw"
-                placeholder="0"
+                value="0"
                 style="display: none"
               />
             </div>
           </div>
-          <div><input type="number" id="sens" placeholder="0" /></div>
-          <div id="threesixty" class="block">
-            <input type="number" id="Deg" placeholder="0" />
+          <div>
+            <p>sens</p>
+            <input type="number" id="sens" value="0" />
+          </div>
+          <div id="threesixty" style="display: none">
+            <p>cm/360</p>
+            <input type="number" id="Deg" value="0" />
           </div>
         </form>
         <br />
-        <div><button onclick="cm360()">calc</button></div>
-        <div id="results"></div>
+        <div><button onclick="calcCmYaw()">calc</button></div>
+        <h1 id="results"></h1>
       </div>
     </div>
-    <script src="/javascript/calc.js"></script>
+    <script src="/javascript/calc.js" />
   </body>
 </html>
