@@ -40,7 +40,7 @@ const calcCmYaw = () => {
   //Get user inputs
   var dpi = parseFloat(document.getElementById("dpi").value);
   var cm = parseFloat(document.getElementById("Deg").value);
-  var yaw = parseFloat(document.getElementById("yaw").value);
+  var yaw = parseFloat(document.getElementById("setYaw").value);
   var sens = parseFloat(document.getElementById("sens").value);
   var customYaw = parseFloat(document.getElementById("custom_yaw").value);
   var result = 0;
@@ -55,6 +55,6 @@ const calcCmYaw = () => {
     resultDiv.innerHTML = `${result.toFixed(3)} cm/360`;
   } else {
     result = (360 * 2.54) / (dpi * cm * sens);
-    resultDiv.innerHTML = `${result.toFixed(3)} yaw`;
+    resultDiv.innerHTML = `${result.toFixed(3)}`;
   }
 };

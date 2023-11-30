@@ -9,22 +9,37 @@
       rel="stylesheet"
     />
     <title>juJuCalc</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-blue-600">
-    <div id="nav" class=""></div>
-    <div id="container">
-      <div id="info"></div>
-      <div id="calc">
-        <form class="p-2">
-          <div>
-            <label for="check360">360 calc</label>
+  <body class="w-full h-full flex justify-center items-center flex-col">
+    <div class="w-full max-w-md mt-10 min-w-md">
+      <div id="header" class="bg-white shadow-md rounded p-5 mb-4">
+        <h1 class="text-bold text-2xl">juJu.</h1>
+      </div>
+    </div>
+    <div class="w-full max-w-md mt-2 min-w-md">
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="flex flex-row mb-4">
+          <div class="mr-4">
+            <label for="check360" class="text-gray-700 font-bold mr-2"
+              >cm/360</label
+            >
             <input
               type="checkbox"
               id="checkDeg"
               class="cbDY"
               onclick="cbDegYaw(this)"
             />
-            <label for="checkYaw">yaw calc</label>
+          </div>
+          <div>
+            <label for="checkYaw" class="text-gray-700 font-bold mr-2"
+              >Yaw</label
+            >
             <input
               type="checkbox"
               id="checkYaw"
@@ -32,48 +47,108 @@
               onclick="cbDegYaw(this)"
             />
           </div>
+        </div>
 
-          <div>
-            <p>DPI</p>
-            <input type="number" id="dpi" value="0" />
-          </div>
-          <div class="flex flex-col w-1/2">
-            <select name="" id="yaw">
-              <option value="0.022">Source</option>
-              <option value="0.069994">Valorant</option>
-              <option value="0.0066">Overwatch</option>
-            </select>
-            <div>
-              <div id="bcustomYaw">
-                <label for="customCheck">Custom yaw?</label>
-                <input
-                  type="checkbox"
-                  id="customCheck"
-                  onclick="boxCustomYaw()"
-                />
-              </div>
-              <input
-                type="number"
-                id="custom_yaw"
-                value="0"
-                style="display: none"
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="dpi">
+            Dpi
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="dpi"
+            type="number"
+            placeholder="800"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="sens">
+            Sensitivity
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="sens"
+            type="number"
+            placeholder="1"
+          />
+        </div>
+
+        <div class="inline-block relative w-full" id="yaw">
+          <label for="setYaw" class="block text-gray-700 text-sm font-bold mb-2"
+            >Game</label
+          >
+          <select
+            name=""
+            id="setYaw"
+            class="shadow block appearance-none w-full bg-white border hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="0.022">Source</option>
+            <option value="0.069994">Valorant</option>
+            <option value="0.0066">Overwatch</option>
+          </select>
+          <div
+            class="pointer-events-none absolute bottom-0 right-0 flex items-center px-2 text-gray-700 py-2"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
               />
-            </div>
+            </svg>
           </div>
-          <div>
-            <p>sens</p>
-            <input type="number" id="sens" value="0" />
+        </div>
+
+        <div>
+          <div id="bcustomYaw" class="mt-1">
+            <label
+              for="customCheck"
+              class="text-gray-700 text-sm font-bold mb-2 mr-1"
+              >Custom yaw?</label
+            >
+            <input type="checkbox" id="customCheck" onclick="boxCustomYaw()" />
           </div>
-          <div id="threesixty" style="display: none">
-            <p>cm/360</p>
-            <input type="number" id="Deg" value="0" />
+          <input
+            class="mt-2 w-1/4 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="number"
+            id="custom_yaw"
+            value="0"
+            style="display: none"
+          />
+        </div>
+
+        <div class="mb-4" id="threesixty" style="display: none">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="Deg">
+            cm/360
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="Deg"
+            type="number"
+            placeholder="800"
+          />
+        </div>
+
+        <div class="flex items-center justify-start mt-5">
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            onclick="calcCmYaw()"
+          >
+            Calculate
+          </button>
+
+          <div class="ml-5 flex flex-row self-center text-center">
+            <h1 class="text-gray-700 text-lg font-bold">Result:</h1>
+            <p id="results" class="ml-2 text-gray-700 text-lg font-bold"></p>
           </div>
-        </form>
-        <br />
-        <div><button onclick="calcCmYaw()">calc</button></div>
-        <h1 id="results"></h1>
-      </div>
+        </div>
+      </form>
+      <p class="text-center text-gray-500 text-xs"></p>
     </div>
+
     <script src="/javascript/calc.js" />
   </body>
 </html>

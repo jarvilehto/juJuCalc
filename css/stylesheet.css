@@ -1,9 +1,20 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: ghostwhite;
+  box-sizing: border-box;
 }
 
+#header {
+  font-family: "Dosis";
+}
+
+body {
+  background-color: rgb(203 213 225);
+}
+
+input {
+  accent-color: #d1d5db;
+}
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
