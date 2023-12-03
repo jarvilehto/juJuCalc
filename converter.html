@@ -8,7 +8,7 @@
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <title>juJuCalc</title>
+    <title>v1 calc</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,8 +34,8 @@
       </div>
     </div>
     <!-- Game 1  -->
-    <div class="w-full w-1/2 mt-2 min-w-lg flex flex-row justify-center">
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mr-5">
+    <div class="w-full mt-2 min-w-lg flex flex-row justify-center">
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mr-5 max-w-1/6">
         <div class="inline-block relative w-full mb-4" id="yaw">
           <label for="gameOne" class="block text-gray-700 text-sm font-bold mb-2"
             >Game 1</label
@@ -132,35 +132,25 @@
           <button
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
-            onclick="calcCmYaw()"
+            onclick="convertSens()"
           >
             Convert
           </button>
         </div>
       </form>
-        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 min-w-lg" ">
             <h1 id="convertedGame" class="text-gray-700 text-lg font-bold mb-2"></h1>
-          <div class="mb-4" id="converter360">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="Deg">
-              cm/360
-            </label>
-            <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="Deg"
-              type="number"
-              placeholder="0"
-            />
+          <div class="mb-4" id="converterSens">
+            <h1 class="block text-gray-700 text-sm font-bold mb-2">cm/360</h1>
+            <div class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight">
+                <p class="text-gray-700" id="convertedDegResult">0</p>
+            </div>
           </div>
           <div class="mb-4" id="converterSens">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="convertedSens">
-              Sensitivity
-            </label>
-            <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="convertedSens"
-              type="number"
-              placeholder="0"
-            />
+            <h1 class="block text-gray-700 text-sm font-bold mb-2">Sensitivity</h1>
+            <div class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight">
+                <p class="text-gray-700" id="convertedSensResult">0</p>
+            </div>
           </div>
         </div>
       <p class="text-center text-gray-500 text-xs"></p>
