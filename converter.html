@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/stylesheet.css" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>juJuCalc</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-blue-800 w-full h-full flex justify-center items-center flex-col"
+  >
+    <div class="w-full max-w-md mt-10 min-w-md">
+      <div
+        id="header"
+        class="bg-white shadow-md rounded p-5 mb-4 flex flex-row justify-between"
+      >
+        <h1 class="text-bold text-2xl">vilehto's converter</h1>
+        <button
+          class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
+        >
+          <a href="/index.html">Calculator</a>
+        </button>
+      </div>
+    </div>
+    <!-- Game 1  -->
+    <div class="w-full w-1/2 mt-2 min-w-lg flex flex-row justify-center">
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mr-5">
+        <div class="inline-block relative w-full mb-4" id="yaw">
+          <label for="gameOne" class="block text-gray-700 text-sm font-bold mb-2"
+            >Game 1</label
+          >
+          <select
+            name=""
+            id="gameOne"
+            class="shadow block appearance-none w-full bg-white border hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="0.022">Source</option>
+            <option value="0.069994">Valorant</option>
+            <option value="0.0066">Overwatch</option>
+          </select>
+          <div
+            class="pointer-events-none absolute bottom-0 right-0 flex items-center px-2 text-gray-700 py-2"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+        <!-- Game 2 -->
+        <div class="inline-block relative w-full mb-4" id="yaw">
+          <label for="gameTwo" class="block text-gray-700 text-sm font-bold mb-2"
+            >Game 2</label
+          >
+          <select
+            name=""
+            id="gameTwo"
+            class="shadow block appearance-none w-full bg-white border hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="0.022">Source</option>
+            <option value="0.069994">Valorant</option>
+            <option value="0.0066">Overwatch</option>
+          </select>
+          <div
+            class="pointer-events-none absolute bottom-0 right-0 flex items-center px-2 text-gray-700 py-2"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="dpi">
+            Dpi
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="dpi"
+            type="number"
+            placeholder="800"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="sens">
+            Sensitivity
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="sens"
+            type="number"
+            placeholder="1"
+          />
+        </div>
+
+        <div class="mb-4" id="threesixty" style="display: none">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="Deg">
+            cm/360
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="Deg"
+            type="number"
+            placeholder="800"
+          />
+        </div>
+
+        <div class="flex items-center justify-center mt-6">
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            onclick="calcCmYaw()"
+          >
+            Convert
+          </button>
+        </div>
+      </form>
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"">
+            <h1 id="convertedGame" class="text-gray-700 text-lg font-bold mb-2"></h1>
+          <div class="mb-4" id="converter360">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="Deg">
+              cm/360
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="Deg"
+              type="number"
+              placeholder="0"
+            />
+          </div>
+          <div class="mb-4" id="converterSens">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="convertedSens">
+              Sensitivity
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="convertedSens"
+              type="number"
+              placeholder="0"
+            />
+          </div>
+        </div>
+      <p class="text-center text-gray-500 text-xs"></p>
+    </div>
+
+    <script src="/javascript/converter.js" />
+  </body>
+</html>

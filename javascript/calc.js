@@ -27,7 +27,12 @@ const cbDegYaw = (obj) => {
   // Set display style based on checkDeg and checkYaw
   cm.style.display = checkDeg.checked ? "none" : "block";
   yaw.style.display = checkDeg.checked ? "block" : "none";
+
   cYaw.style.display = checkYaw.checked ? "none" : "block";
+  if (checkYaw.checked == true) {
+    checkCustomYaw.checked = false;
+    customYaw.style.display = "none";
+  }
 };
 
 // Check if custom yaw is enabled.
